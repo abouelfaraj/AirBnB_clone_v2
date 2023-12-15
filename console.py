@@ -120,6 +120,9 @@ class HBNBCommand(cmd.Cmd):
             return
         args_list= args.split()
         class_name = args_list[0]
+        obj = eval("{}()".format(args_list[0]))
+        print("{}".format(obj.id))
+
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
