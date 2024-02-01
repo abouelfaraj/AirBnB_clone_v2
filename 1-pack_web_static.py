@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""""""
+"""Module packing web_static folder"""
 from datetime import datetime
 from fabric.api import local
 import os
 
 
 def do_pack():
+    """Function permet to pack web_static folder"""
     if not os.path.exists("version"):
         local('mkdir versions')
     tm = datetime.now()
