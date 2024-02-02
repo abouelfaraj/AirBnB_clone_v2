@@ -28,17 +28,16 @@ def do_deploy(archive_path):
         return False
     try:
         name = archive_path.split("/")[-1]
-        name_inex = name.split(".")[0]
+        name_i = name.split(".")[0]
         path = "/data/web_static/releases/"
-        
         put(archive_path, "/tmp/")
-        run("sudo mkdir -p {}{}/".format(path, name_inex))
-        run("sudo tar -xzf /tmp/{} -C {}{}/".format(name, path, name_inex))
+        run("sudo mkdir -p {}{}/".format(path, name_i))
+        run("sudo tar -xzf /tmp/{} -C {}{}/".format(name, path, name_i))
         run("sudo rm /tmp/{}".format(name))
-        run("sudo mv {0}{1}/web_static/* {0}{1}/".format(path, name_inex))
-        run("sudo rm -rf {}{}/web_static".format(path, name_inex))
+        run("sudo mv {0}{1}/web_static/* {0}{1}/".format(path, name_i))
+        run("sudo rm -rf {}{}/web_static".format(path, name_i))
         run("sudo rm -rf /data/web_static/current")
-        run("sudo ln -s {}{}/ /data/web_static/current".format(path, name_inex))
+        run("sudo ln -s {}{}/ /data/web_static/current".format(path, name_i))
         return True
     except:
         return False
