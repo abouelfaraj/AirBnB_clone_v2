@@ -10,6 +10,7 @@ import os
 env.hosts = ['34.207.155.207', '18.206.208.206']
 env.user = "ubuntu"
 
+
 def do_deploy(archive_path):
     """Fabric script that distributes an archive to server web-01 and web-02"""
     if not os.path.exists(archive_path):
